@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 import service from './services/Users';
 import User from './components/user';
+import Paginator from './components/paginator';
 
 const App = () => {
 	const [users, setUsers] = useState({
@@ -75,35 +76,13 @@ const App = () => {
 
 			<div className='row mt-2'>
 				<div className='col-6 align-self-center'>
-					<nav aria-label='Page navigation'>
-						<ul className='pagination'>
-							<li className='page-item'>
-								<button className='page-link' href='#' aria-label='Previous'>
-									<span aria-hidden='true'>&laquo;</span>
-								</button>
-							</li>
-							<li className='page-item'>
-								<button className='page-link' onClick={() => loadPage(1)}>
-									1
-								</button>
-							</li>
-							<li className='page-item'>
-								<button className='page-link' onClick={() => loadPage(2)}>
-									2
-								</button>
-							</li>
-							<li className='page-item'>
-								<button className='page-link' onClick={() => loadPage(3)}>
-									3
-								</button>
-							</li>
-							<li className='page-item'>
-								<button className='page-link' href='#' aria-label='Next'>
-									<span aria-hidden='true'>&raquo;</span>
-								</button>
-							</li>
-						</ul>
-					</nav>
+					<Paginator
+						pages={pageNumbers}
+						loadPage={loadPage}
+						current_page={current_page}
+						total={total}
+						per_page={per_page}
+					/>
 				</div>
 			</div>
 		</div>
